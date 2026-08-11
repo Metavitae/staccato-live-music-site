@@ -246,7 +246,7 @@ a, button { touch-action: manipulation; }
   overflow: hidden; perspective: 1400px; border-radius: 2px;
 }
 @media (max-width: 640px) {
-  .scrollstage-wrap { height: 320vh; height: 320dvh; margin-top: 1.5rem; }
+  .scrollstage-wrap { height: 280vh; height: 280dvh; margin-top: 1.5rem; }
   .scrollstage { top: 3dvh; height: 60vh; height: 60dvh; min-height: 300px; max-height: 480px; }
 }
 .panel {
@@ -509,7 +509,17 @@ a, button { touch-action: manipulation; }
   #v1 .cta-row a, #v2 .cta-row a, #v3 .cta-row a { text-align: center; }
   #v1 .btn-primary, #v2 .btn-primary, #v3 .btn-primary { min-height: 44px; display: flex; align-items: center; justify-content: center; }
   #v1 .contact-row, #v2 .contact-row, #v3 .contact-row { flex-direction: column; gap: 1.25rem; align-items: flex-start; }
-  #v1 footer.site, #v2 footer.site, #v3 footer.site { flex-direction: column; gap: 0.4rem; text-align: left; }
+  #v1 footer.site, #v2 footer.site, #v3 footer.site { flex-direction: column; gap: 0.4rem; text-align: left; font-size: 0.88rem; }
+
+  /* legibility pass — real phone testing found these too small at their desktop-derived minimums */
+  #v1 .eyebrow, #v2 .eyebrow, #v3 .eyebrow { font-size: 0.84rem; }
+  #v1 .about-text, #v2 .about-text, #v3 .about-text { font-size: 1.08rem; }
+  #v1 .service h3, #v2 .service h3, #v3 .service h3 { font-size: 1.25rem; }
+  #v1 .service p, #v2 .service p, #v3 .service p { font-size: 1.02rem; }
+  #v1 address, #v2 address, #v3 address { font-size: 1rem; }
+  .switcher-btn { font-size: 0.82rem; }
+  .panel-caption { font-size: 1.05rem; padding: 1.25rem 1.4rem; }
+  .panel-caption span { font-size: 0.8rem; margin-bottom: 0.4rem; }
 }
 </style>
 
@@ -771,16 +781,19 @@ a, button { touch-action: manipulation; }
   /* ---- Mistral-style scroll depth-swap panel stage ---- */
   var stages = Array.prototype.slice.call(document.querySelectorAll('.scrollstage-wrap'));
 
-  function viewportHeight() {
-    return (window.visualViewport && window.visualViewport.height) || window.innerHeight;
-  }
-
   function updateStage(wrap) {
+    var stage = wrap.querySelector('.scrollstage');
     var panels = wrap.querySelectorAll('.panel');
     var n = panels.length;
-    if (!n) { return; }
+    if (!n || !stage) { return; }
     var rect = wrap.getBoundingClientRect();
-    var scrollable = rect.height - viewportHeight();
+    var stageTop = parseFloat(window.getComputedStyle(stage).top) || 0;
+    var stageHeight = stage.getBoundingClientRect().height;
+    /* Time progress against the sticky box's own measured height, not the
+       viewport — the stage is shorter than the viewport on small screens, and
+       using viewport height here made "progress=1" land well before the box
+       actually unsticks, leaving a dead static gap before the next section. */
+    var scrollable = rect.height - stageHeight - stageTop;
     var progress = scrollable > 0 ? Math.min(1, Math.max(0, -rect.top / scrollable)) : 0;
     var pos = progress * (n - 1);
     panels.forEach(function (panel, i) {
