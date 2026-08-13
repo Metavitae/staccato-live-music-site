@@ -257,7 +257,8 @@ a, button { touch-action: manipulation; }
 /* ---------- Servicios: depth-swap panels, varied entry direction ---------- */
 .svcstage-wrap { position: relative; height: 190vh; height: 190dvh; margin-top: 1.5rem; }
 .svcstage {
-  position: sticky; top: 3vh; top: 3dvh; height: 32vh; height: 32dvh; max-height: 270px; min-height: 205px;
+  position: sticky; top: 50vh; top: 50dvh; transform: translateY(-50%);
+  height: 32vh; height: 32dvh; max-height: 270px; min-height: 205px;
   overflow: hidden; perspective: 1200px;
 }
 .svc-panel {
@@ -269,7 +270,7 @@ a, button { touch-action: manipulation; }
 }
 .no-js .svcstage-wrap, .reduced-motion .svcstage-wrap { height: auto; }
 .no-js .svcstage, .reduced-motion .svcstage {
-  position: static; height: auto; max-height: none; perspective: none;
+  position: static; height: auto; max-height: none; perspective: none; transform: none;
   display: grid; grid-template-columns: 1fr; gap: 1px;
 }
 .no-js .svc-panel, .reduced-motion .svc-panel {
@@ -281,7 +282,8 @@ a, button { touch-action: manipulation; }
 .gallery-intro { max-width: 38rem; margin: 1rem 0 0; }
 .gallerystage-wrap { position: relative; height: 280vh; height: 280dvh; margin-top: 1.5rem; }
 .gallerystage {
-  position: sticky; top: 3vh; top: 3dvh; height: 46vh; height: 46dvh; max-height: 380px; min-height: 260px;
+  position: sticky; top: 50vh; top: 50dvh; transform: translateY(-50%);
+  height: 46vh; height: 46dvh; max-height: 380px; min-height: 260px;
   overflow: hidden; perspective: 1400px; border-radius: 2px;
 }
 .gallery-panel {
@@ -306,7 +308,7 @@ a, button { touch-action: manipulation; }
 .contact-row address a { text-decoration: underline; text-underline-offset: 2px; }
 .no-js .gallerystage-wrap, .reduced-motion .gallerystage-wrap { height: auto; }
 .no-js .gallerystage, .reduced-motion .gallerystage {
-  position: static; height: auto; max-height: none; perspective: none;
+  position: static; height: auto; max-height: none; perspective: none; transform: none;
   display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.6rem;
 }
 .no-js .gallery-panel, .reduced-motion .gallery-panel {
@@ -551,11 +553,11 @@ a, button { touch-action: manipulation; }
   .switcher-btn .short { display: none; }
 
   .svcstage-wrap { height: 340vh; height: 340dvh; margin-top: 2rem; }
-  .svcstage { top: 6vh; top: 6dvh; height: 60vh; height: 60dvh; max-height: 460px; min-height: 320px; }
+  .svcstage { height: 60vh; height: 60dvh; max-height: 460px; min-height: 320px; }
   .svc-panel { padding: 2rem 1.8rem; }
 
   .gallerystage-wrap { height: 540vh; height: 540dvh; margin-top: 2rem; }
-  .gallerystage { top: 6vh; top: 6dvh; height: 88vh; height: 88dvh; max-height: 640px; min-height: 340px; }
+  .gallerystage { height: 88vh; height: 88dvh; max-height: 640px; min-height: 340px; }
   .panel-caption { padding: 1.5rem 1.75rem; font-size: 0.98rem; }
   .panel-caption span { font-size: 0.74rem; margin-bottom: 0.3rem; }
 
