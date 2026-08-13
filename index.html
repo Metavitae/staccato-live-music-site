@@ -4,12 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Staccato Live Music — 3 conceptos de sitio (Koreko)</title>
+<meta name="description" content="Staccato Live Music — banda de música en vivo en Puerto Vallarta y la Riviera Nayarit, con casi una década de trayectoria en bodas, resorts y eventos privados.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "MusicGroup",
   "name": "Staccato Live Music",
-  "genre": "Live music / versatile band",
+  "genre": "Música en vivo / banda versátil",
   "foundingLocation": {
     "@type": "Place",
     "address": {
@@ -191,6 +192,8 @@ body {
   font-family: 'IBM Plex Sans', system-ui, sans-serif;
   overflow-x: hidden;
 }
+/* ---------- i18n: FOUC guard ---------- */
+body.i18n-loading { visibility: hidden; }
 h1, h2, h3, p { margin: 0; }
 img { max-width: 100%; display: block; }
 a { color: inherit; }
@@ -235,6 +238,17 @@ a, button { touch-action: manipulation; }
 .switcher-btn:hover { border-color: #6b6252; color: #F3EAD9; }
 .switcher-btn:focus-visible { outline: 2px solid #C89B3C; outline-offset: 2px; }
 .switcher-btn.active { background: #EFE6D2; color: #14100C; border-color: #EFE6D2; }
+
+.lang-toggle {
+  appearance: none; border: 1px solid #3A352C; background: #17140F; color: #C9BFA9;
+  padding: 0.65rem 0.9rem; min-height: 44px; border-radius: 3px; cursor: pointer;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.85rem; letter-spacing: 0.02em;
+  margin-left: auto;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.lang-toggle:hover { border-color: #6b6252; color: #F3EAD9; }
+.lang-toggle:focus-visible { outline: 2px solid #C89B3C; outline-offset: 2px; }
 
 .version { display: block; }
 .version[hidden] { display: none; }
@@ -624,15 +638,19 @@ a, button { touch-action: manipulation; }
 }
 </style>
 </head>
-<body>
+<body class="i18n-loading">
+<noscript><style>body{visibility:visible!important;}</style></noscript>
 
-<div class="switcher" role="tablist" aria-label="Elegir concepto de diseño">
-  <span class="switcher-label">Koreko — propuesta de sitio para Staccato Live Music</span>
-  <div class="switcher-buttons">
-    <button class="switcher-btn active" data-target="v1" role="tab" aria-selected="true"><span class="full">① Escenario nocturno</span><span class="short">① Escenario</span></button>
-    <button class="switcher-btn" data-target="v2" role="tab" aria-selected="false"><span class="full">② Atardecer en el Malecón</span><span class="short">② Malecón</span></button>
-    <button class="switcher-btn" data-target="v3" role="tab" aria-selected="false"><span class="full">③ Cartel de tocada</span><span class="short">③ Cartel</span></button>
+<div class="switcher">
+  <span class="switcher-label" data-i18n="switcher_label">Koreko — propuesta de sitio para Staccato Live Music</span>
+  <div class="switcher-buttons" role="tablist" aria-label="Elegir concepto de diseño" data-i18n-aria="switcher_aria_label">
+    <button class="switcher-btn active" data-target="v1" role="tab" aria-selected="true"><span class="full" data-i18n="switcher_v1_full">① Escenario nocturno</span><span class="short" data-i18n="switcher_v1_short">① Escenario</span></button>
+    <button class="switcher-btn" data-target="v2" role="tab" aria-selected="false"><span class="full" data-i18n="switcher_v2_full">② Atardecer en el Malecón</span><span class="short" data-i18n="switcher_v2_short">② Malecón</span></button>
+    <button class="switcher-btn" data-target="v3" role="tab" aria-selected="false"><span class="full" data-i18n="switcher_v3_full">③ Cartel de tocada</span><span class="short" data-i18n="switcher_v3_short">③ Cartel</span></button>
   </div>
+  <button id="lang-toggle" type="button" class="lang-toggle" aria-label="Switch language / Cambiar idioma">
+    <span id="lang-toggle-label">EN</span>
+  </button>
 </div>
 
 <!-- ============================= V1 ============================= -->
@@ -641,70 +659,70 @@ a, button { touch-action: manipulation; }
     <header class="site">
       <span class="wordmark">Staccato</span>
       <nav class="site"><ul>
-        <li><a href="#v1-sobre">Sobre</a></li>
-        <li><a href="#v1-servicios">Servicios</a></li>
-        <li><a href="#v1-contacto">Contacto</a></li>
+        <li><a href="#v1-sobre" data-i18n="nav_sobre">Sobre</a></li>
+        <li><a href="#v1-servicios" data-i18n="nav_servicios">Servicios</a></li>
+        <li><a href="#v1-contacto" data-i18n="nav_contacto">Contacto</a></li>
       </ul></nav>
     </header>
 
     <section class="hero">
       <div class="hero-inner">
         <span class="eyebrow reveal reveal-1">Puerto Vallarta, Jalisco</span>
-        <h1 class="reveal reveal-2">Staccato Live Music toca en vivo en Puerto Vallarta y la Riviera Nayarit.</h1>
-        <p class="sub reveal reveal-3">Banda de música en vivo con cerca de una década de trayectoria en bodas, resorts y eventos privados en la bahía de Banderas.</p>
+        <h1 class="reveal reveal-2" data-i18n="hero_h1">Staccato Live Music toca en vivo en Puerto Vallarta y la Riviera Nayarit.</h1>
+        <p class="sub reveal reveal-3" data-i18n="hero_sub">Banda de música en vivo con cerca de una década de trayectoria en bodas, resorts y eventos privados en la bahía de Banderas.</p>
         <div class="cta-row reveal reveal-3">
-          <a class="btn-primary" href="https://www.facebook.com/Staccatolivemusic/" target="_blank" rel="noopener">Ver disponibilidad en Facebook</a>
-          <a class="btn-ghost" href="#v1-contacto">Escríbenos</a>
+          <a class="btn-primary" href="https://www.facebook.com/Staccatolivemusic/" target="_blank" rel="noopener" data-i18n="cta_primary">Ver disponibilidad en Facebook</a>
+          <a class="btn-ghost" href="#v1-contacto" data-i18n="cta_secondary">Escríbenos</a>
         </div>
       </div>
     </section>
 
     <section class="block" id="v1-sobre">
-      <span class="eyebrow">Sobre la banda</span>
-      <p class="about-text">Desde 2017, Staccato Live Music ha llevado su repertorio en vivo a bodas, resorts y eventos privados en Puerto Vallarta y la Riviera Nayarit — de sets íntimos a producciones de escenario a gran escala, con formaciones que van de cuarteto a banda completa con sección de metales.</p>
+      <span class="eyebrow" data-i18n="about_eyebrow">Sobre la banda</span>
+      <p class="about-text" data-i18n="about_text">Desde 2017, Staccato Live Music ha llevado su repertorio en vivo a bodas, resorts y eventos privados en Puerto Vallarta y la Riviera Nayarit — de sets íntimos a producciones de escenario a gran escala, con formaciones que van de cuarteto a banda completa con sección de metales.</p>
     </section>
 
     <section class="block" id="v1-servicios">
-      <span class="eyebrow">Servicios</span>
+      <span class="eyebrow" data-i18n="services_eyebrow">Servicios</span>
       <div class="svcstage-wrap">
         <div class="svcstage">
           <div class="svc-panel" data-dir="left">
             <span class="num">01</span>
-            <h3>Bodas y eventos privados</h3>
-            <p>Del cóctel a la pista de baile, un repertorio que se ajusta al momento de la noche.</p>
+            <h3 data-i18n="svc1_h3">Bodas y eventos privados</h3>
+            <p data-i18n="svc1_p">Del cóctel a la pista de baile, un repertorio que se ajusta al momento de la noche.</p>
           </div>
           <div class="svc-panel" data-dir="bottom">
             <span class="num">02</span>
-            <h3>Hoteles y resorts</h3>
-            <p>Sets en vivo junto a la alberca o en terraza — con paso ya confirmado por The St. Regis Punta Mita Resort.</p>
+            <h3 data-i18n="svc2_h3">Hoteles y resorts</h3>
+            <p data-i18n="svc2_p">Sets en vivo junto a la alberca o en terraza — con paso ya confirmado por The St. Regis Punta Mita Resort.</p>
           </div>
           <div class="svc-panel" data-dir="right">
             <span class="num">03</span>
-            <h3>Producciones a gran escala</h3>
-            <p>Escenario a medida, sección de metales y puesta en escena completa para el evento que lo requiera.</p>
+            <h3 data-i18n="svc3_h3">Producciones a gran escala</h3>
+            <p data-i18n="svc3_p">Escenario a medida, sección de metales y puesta en escena completa para el evento que lo requiera.</p>
           </div>
         </div>
       </div>
     </section>
 
     <section class="block" id="v1-momentos">
-      <span class="eyebrow">Momentos en vivo</span>
-      <p class="about-text gallery-intro">Un vistazo real a Staccato Live Music en escena — bodas, resorts y producciones a medida en Puerto Vallarta y la Riviera Nayarit.</p>
+      <span class="eyebrow" data-i18n="gallery_eyebrow">Momentos en vivo</span>
+      <p class="about-text gallery-intro" data-i18n="gallery_intro">Un vistazo real a Staccato Live Music en escena — bodas, resorts y producciones a medida en Puerto Vallarta y la Riviera Nayarit.</p>
       <div class="gallerystage-wrap">
         <div class="gallerystage">
-          <div class="gallery-panel ph-stregis" data-dir="left"><div class="panel-caption"><span>Hoteles y resorts</span>The St. Regis Punta Mita Resort</div></div>
-          <div class="gallery-panel ph-wedding" data-dir="bottom"><div class="panel-caption"><span>Bodas</span>Boda frente al mar</div></div>
-          <div class="gallery-panel ph-palapa" data-dir="right"><div class="panel-caption"><span>Bodas</span>Boda bajo palapa</div></div>
-          <div class="gallery-panel ph-poolside" data-dir="left"><div class="panel-caption"><span>Hoteles y resorts</span>Sesión en alberca de hotel</div></div>
-          <div class="gallery-panel ph-stage" data-dir="bottom"><div class="panel-caption"><span>Producción</span>Escenario en vivo a gran escala</div></div>
+          <div class="gallery-panel ph-stregis" data-dir="left"><div class="panel-caption" data-i18n="panel_stregis"><span>Hoteles y resorts</span>The St. Regis Punta Mita Resort</div></div>
+          <div class="gallery-panel ph-wedding" data-dir="bottom"><div class="panel-caption" data-i18n="panel_wedding"><span>Bodas</span>Boda frente al mar</div></div>
+          <div class="gallery-panel ph-palapa" data-dir="right"><div class="panel-caption" data-i18n="panel_palapa"><span>Bodas</span>Boda bajo palapa</div></div>
+          <div class="gallery-panel ph-poolside" data-dir="left"><div class="panel-caption" data-i18n="panel_poolside"><span>Hoteles y resorts</span>Sesión en alberca de hotel</div></div>
+          <div class="gallery-panel ph-stage" data-dir="bottom"><div class="panel-caption" data-i18n="panel_stage"><span>Producción</span>Escenario en vivo a gran escala</div></div>
         </div>
       </div>
     </section>
 
     <section class="block" id="v1-contacto">
-      <span class="eyebrow">Contacto</span>
+      <span class="eyebrow" data-i18n="contact_eyebrow">Contacto</span>
       <div class="contact-row">
-        <p class="about-text">¿Buscas música en vivo para tu evento? Escríbenos o llama directamente para disponibilidad y cotización.</p>
+        <p class="about-text" data-i18n="contact_text">¿Buscas música en vivo para tu evento? Escríbenos o llama directamente para disponibilidad y cotización.</p>
         <address>
           Puerto Vallarta, Jalisco, México<br>
           <a href="tel:+523221591435">322 159 1435</a> · <a href="mailto:Staccato.Musicband@gmail.com">Staccato.Musicband@gmail.com</a><br>
@@ -715,7 +733,7 @@ a, button { touch-action: manipulation; }
 
     <footer class="site">
       <span>Staccato Live Music — Puerto Vallarta, Jalisco</span>
-      <span>Propuesta de sitio por Koreko</span>
+      <span data-i18n="footer_tagline">Propuesta de sitio por Koreko</span>
     </footer>
   </div>
 </main>
@@ -726,71 +744,71 @@ a, button { touch-action: manipulation; }
     <header class="site">
       <span class="wordmark">Staccato</span>
       <nav class="site"><ul>
-        <li><a href="#v2-sobre">Sobre</a></li>
-        <li><a href="#v2-servicios">Servicios</a></li>
-        <li><a href="#v2-contacto">Contacto</a></li>
+        <li><a href="#v2-sobre" data-i18n="nav_sobre">Sobre</a></li>
+        <li><a href="#v2-servicios" data-i18n="nav_servicios">Servicios</a></li>
+        <li><a href="#v2-contacto" data-i18n="nav_contacto">Contacto</a></li>
       </ul></nav>
     </header>
 
     <section class="hero">
       <div class="hero-inner">
         <span class="eyebrow reveal reveal-1">Puerto Vallarta, Jalisco</span>
-        <h1 class="reveal reveal-2">Staccato Live Music toca en vivo en Puerto Vallarta y la Riviera Nayarit.</h1>
-        <p class="sub reveal reveal-3">Banda de música en vivo con cerca de una década de trayectoria en bodas, resorts y eventos privados en la bahía de Banderas.</p>
+        <h1 class="reveal reveal-2" data-i18n="hero_h1">Staccato Live Music toca en vivo en Puerto Vallarta y la Riviera Nayarit.</h1>
+        <p class="sub reveal reveal-3" data-i18n="hero_sub">Banda de música en vivo con cerca de una década de trayectoria en bodas, resorts y eventos privados en la bahía de Banderas.</p>
         <div class="cta-row reveal reveal-3">
-          <a class="btn-primary" href="https://www.facebook.com/Staccatolivemusic/" target="_blank" rel="noopener">Ver disponibilidad en Facebook</a>
-          <a class="btn-ghost" href="#v2-contacto">Escríbenos</a>
+          <a class="btn-primary" href="https://www.facebook.com/Staccatolivemusic/" target="_blank" rel="noopener" data-i18n="cta_primary">Ver disponibilidad en Facebook</a>
+          <a class="btn-ghost" href="#v2-contacto" data-i18n="cta_secondary">Escríbenos</a>
         </div>
       </div>
       <div class="horizon" aria-hidden="true"></div>
     </section>
 
     <section class="block" id="v2-sobre">
-      <span class="eyebrow">Sobre la banda</span>
-      <p class="about-text">Desde 2017, Staccato Live Music ha llevado su repertorio en vivo a bodas, resorts y eventos privados en Puerto Vallarta y la Riviera Nayarit — de sets íntimos a producciones de escenario a gran escala, con formaciones que van de cuarteto a banda completa con sección de metales.</p>
+      <span class="eyebrow" data-i18n="about_eyebrow">Sobre la banda</span>
+      <p class="about-text" data-i18n="about_text">Desde 2017, Staccato Live Music ha llevado su repertorio en vivo a bodas, resorts y eventos privados en Puerto Vallarta y la Riviera Nayarit — de sets íntimos a producciones de escenario a gran escala, con formaciones que van de cuarteto a banda completa con sección de metales.</p>
     </section>
 
     <section class="block tint" id="v2-servicios">
-      <span class="eyebrow">Servicios</span>
+      <span class="eyebrow" data-i18n="services_eyebrow">Servicios</span>
       <div class="svcstage-wrap">
         <div class="svcstage">
           <div class="svc-panel" data-dir="left">
             <span class="num">01</span>
-            <h3>Bodas y eventos privados</h3>
-            <p>Del cóctel a la pista de baile, un repertorio que se ajusta al momento de la noche.</p>
+            <h3 data-i18n="svc1_h3">Bodas y eventos privados</h3>
+            <p data-i18n="svc1_p">Del cóctel a la pista de baile, un repertorio que se ajusta al momento de la noche.</p>
           </div>
           <div class="svc-panel" data-dir="bottom">
             <span class="num">02</span>
-            <h3>Hoteles y resorts</h3>
-            <p>Sets en vivo junto a la alberca o en terraza — con paso ya confirmado por The St. Regis Punta Mita Resort.</p>
+            <h3 data-i18n="svc2_h3">Hoteles y resorts</h3>
+            <p data-i18n="svc2_p">Sets en vivo junto a la alberca o en terraza — con paso ya confirmado por The St. Regis Punta Mita Resort.</p>
           </div>
           <div class="svc-panel" data-dir="right">
             <span class="num">03</span>
-            <h3>Producciones a gran escala</h3>
-            <p>Escenario a medida, sección de metales y puesta en escena completa para el evento que lo requiera.</p>
+            <h3 data-i18n="svc3_h3">Producciones a gran escala</h3>
+            <p data-i18n="svc3_p">Escenario a medida, sección de metales y puesta en escena completa para el evento que lo requiera.</p>
           </div>
         </div>
       </div>
     </section>
 
     <section class="block" id="v2-momentos">
-      <span class="eyebrow">Momentos en vivo</span>
-      <p class="about-text gallery-intro">Un vistazo real a Staccato Live Music en escena — bodas, resorts y producciones a medida en Puerto Vallarta y la Riviera Nayarit.</p>
+      <span class="eyebrow" data-i18n="gallery_eyebrow">Momentos en vivo</span>
+      <p class="about-text gallery-intro" data-i18n="gallery_intro">Un vistazo real a Staccato Live Music en escena — bodas, resorts y producciones a medida en Puerto Vallarta y la Riviera Nayarit.</p>
       <div class="gallerystage-wrap">
         <div class="gallerystage">
-          <div class="gallery-panel ph-stregis" data-dir="left"><div class="panel-caption"><span>Hoteles y resorts</span>The St. Regis Punta Mita Resort</div></div>
-          <div class="gallery-panel ph-wedding" data-dir="bottom"><div class="panel-caption"><span>Bodas</span>Boda frente al mar</div></div>
-          <div class="gallery-panel ph-palapa" data-dir="right"><div class="panel-caption"><span>Bodas</span>Boda bajo palapa</div></div>
-          <div class="gallery-panel ph-poolside" data-dir="left"><div class="panel-caption"><span>Hoteles y resorts</span>Sesión en alberca de hotel</div></div>
-          <div class="gallery-panel ph-stage" data-dir="bottom"><div class="panel-caption"><span>Producción</span>Escenario en vivo a gran escala</div></div>
+          <div class="gallery-panel ph-stregis" data-dir="left"><div class="panel-caption" data-i18n="panel_stregis"><span>Hoteles y resorts</span>The St. Regis Punta Mita Resort</div></div>
+          <div class="gallery-panel ph-wedding" data-dir="bottom"><div class="panel-caption" data-i18n="panel_wedding"><span>Bodas</span>Boda frente al mar</div></div>
+          <div class="gallery-panel ph-palapa" data-dir="right"><div class="panel-caption" data-i18n="panel_palapa"><span>Bodas</span>Boda bajo palapa</div></div>
+          <div class="gallery-panel ph-poolside" data-dir="left"><div class="panel-caption" data-i18n="panel_poolside"><span>Hoteles y resorts</span>Sesión en alberca de hotel</div></div>
+          <div class="gallery-panel ph-stage" data-dir="bottom"><div class="panel-caption" data-i18n="panel_stage"><span>Producción</span>Escenario en vivo a gran escala</div></div>
         </div>
       </div>
     </section>
 
     <section class="block" id="v2-contacto">
-      <span class="eyebrow">Contacto</span>
+      <span class="eyebrow" data-i18n="contact_eyebrow">Contacto</span>
       <div class="contact-row">
-        <p class="about-text">¿Buscas música en vivo para tu evento? Escríbenos o llama directamente para disponibilidad y cotización.</p>
+        <p class="about-text" data-i18n="contact_text">¿Buscas música en vivo para tu evento? Escríbenos o llama directamente para disponibilidad y cotización.</p>
         <address>
           Puerto Vallarta, Jalisco, México<br>
           <a href="tel:+523221591435">322 159 1435</a> · <a href="mailto:Staccato.Musicband@gmail.com">Staccato.Musicband@gmail.com</a><br>
@@ -801,7 +819,7 @@ a, button { touch-action: manipulation; }
 
     <footer class="site">
       <span>Staccato Live Music — Puerto Vallarta, Jalisco</span>
-      <span>Propuesta de sitio por Koreko</span>
+      <span data-i18n="footer_tagline">Propuesta de sitio por Koreko</span>
     </footer>
   </div>
 </main>
@@ -812,70 +830,70 @@ a, button { touch-action: manipulation; }
     <header class="site">
       <span class="wordmark">STACCATO</span>
       <nav class="site"><ul>
-        <li><a href="#v3-sobre">Sobre</a></li>
-        <li><a href="#v3-servicios">Servicios</a></li>
-        <li><a href="#v3-contacto">Contacto</a></li>
+        <li><a href="#v3-sobre" data-i18n="nav_sobre">Sobre</a></li>
+        <li><a href="#v3-servicios" data-i18n="nav_servicios">Servicios</a></li>
+        <li><a href="#v3-contacto" data-i18n="nav_contacto">Contacto</a></li>
       </ul></nav>
     </header>
 
     <section class="hero">
       <div class="hero-inner">
         <span class="eyebrow reveal reveal-1">Puerto Vallarta, Jalisco</span>
-        <h1 class="reveal reveal-2">Staccato Live Music <mark>toca en vivo</mark> en Puerto Vallarta y la Riviera Nayarit.</h1>
-        <p class="sub reveal reveal-3">Banda de música en vivo con cerca de una década de trayectoria en bodas, resorts y eventos privados en la bahía de Banderas.</p>
+        <h1 class="reveal reveal-2" data-i18n="hero_h1_v3">Staccato Live Music <mark>toca en vivo</mark> en Puerto Vallarta y la Riviera Nayarit.</h1>
+        <p class="sub reveal reveal-3" data-i18n="hero_sub">Banda de música en vivo con cerca de una década de trayectoria en bodas, resorts y eventos privados en la bahía de Banderas.</p>
         <div class="cta-row reveal reveal-3">
-          <a class="btn-primary" href="https://www.facebook.com/Staccatolivemusic/" target="_blank" rel="noopener">Ver disponibilidad en Facebook</a>
-          <a class="btn-ghost" href="#v3-contacto">Escríbenos</a>
+          <a class="btn-primary" href="https://www.facebook.com/Staccatolivemusic/" target="_blank" rel="noopener" data-i18n="cta_primary">Ver disponibilidad en Facebook</a>
+          <a class="btn-ghost" href="#v3-contacto" data-i18n="cta_secondary">Escríbenos</a>
         </div>
       </div>
     </section>
 
     <section class="block" id="v3-sobre">
-      <span class="eyebrow">Sobre la banda</span>
-      <p class="about-text">Desde 2017, Staccato Live Music ha llevado su repertorio en vivo a bodas, resorts y eventos privados en Puerto Vallarta y la Riviera Nayarit — de sets íntimos a producciones de escenario a gran escala, con formaciones que van de cuarteto a banda completa con sección de metales.</p>
+      <span class="eyebrow" data-i18n="about_eyebrow">Sobre la banda</span>
+      <p class="about-text" data-i18n="about_text">Desde 2017, Staccato Live Music ha llevado su repertorio en vivo a bodas, resorts y eventos privados en Puerto Vallarta y la Riviera Nayarit — de sets íntimos a producciones de escenario a gran escala, con formaciones que van de cuarteto a banda completa con sección de metales.</p>
     </section>
 
     <section class="block ink" id="v3-servicios">
-      <span class="eyebrow">Servicios</span>
+      <span class="eyebrow" data-i18n="services_eyebrow">Servicios</span>
       <div class="svcstage-wrap">
         <div class="svcstage">
           <div class="svc-panel" data-dir="left">
             <span class="num">01</span>
-            <h3>Bodas y eventos privados</h3>
-            <p>Del cóctel a la pista de baile, un repertorio que se ajusta al momento de la noche.</p>
+            <h3 data-i18n="svc1_h3">Bodas y eventos privados</h3>
+            <p data-i18n="svc1_p">Del cóctel a la pista de baile, un repertorio que se ajusta al momento de la noche.</p>
           </div>
           <div class="svc-panel" data-dir="bottom">
             <span class="num">02</span>
-            <h3>Hoteles y resorts</h3>
-            <p>Sets en vivo junto a la alberca o en terraza — con paso ya confirmado por The St. Regis Punta Mita Resort.</p>
+            <h3 data-i18n="svc2_h3">Hoteles y resorts</h3>
+            <p data-i18n="svc2_p">Sets en vivo junto a la alberca o en terraza — con paso ya confirmado por The St. Regis Punta Mita Resort.</p>
           </div>
           <div class="svc-panel" data-dir="right">
             <span class="num">03</span>
-            <h3>Producciones a gran escala</h3>
-            <p>Escenario a medida, sección de metales y puesta en escena completa para el evento que lo requiera.</p>
+            <h3 data-i18n="svc3_h3">Producciones a gran escala</h3>
+            <p data-i18n="svc3_p">Escenario a medida, sección de metales y puesta en escena completa para el evento que lo requiera.</p>
           </div>
         </div>
       </div>
     </section>
 
     <section class="block ink" id="v3-momentos">
-      <span class="eyebrow">Momentos en vivo</span>
-      <p class="about-text gallery-intro">Un vistazo real a Staccato Live Music en escena — bodas, resorts y producciones a medida en Puerto Vallarta y la Riviera Nayarit.</p>
+      <span class="eyebrow" data-i18n="gallery_eyebrow">Momentos en vivo</span>
+      <p class="about-text gallery-intro" data-i18n="gallery_intro">Un vistazo real a Staccato Live Music en escena — bodas, resorts y producciones a medida en Puerto Vallarta y la Riviera Nayarit.</p>
       <div class="gallerystage-wrap">
         <div class="gallerystage">
-          <div class="gallery-panel ph-stregis" data-dir="left"><div class="panel-caption"><span>Hoteles y resorts</span>The St. Regis Punta Mita Resort</div></div>
-          <div class="gallery-panel ph-wedding" data-dir="bottom"><div class="panel-caption"><span>Bodas</span>Boda frente al mar</div></div>
-          <div class="gallery-panel ph-palapa" data-dir="right"><div class="panel-caption"><span>Bodas</span>Boda bajo palapa</div></div>
-          <div class="gallery-panel ph-poolside" data-dir="left"><div class="panel-caption"><span>Hoteles y resorts</span>Sesión en alberca de hotel</div></div>
-          <div class="gallery-panel ph-stage" data-dir="bottom"><div class="panel-caption"><span>Producción</span>Escenario en vivo a gran escala</div></div>
+          <div class="gallery-panel ph-stregis" data-dir="left"><div class="panel-caption" data-i18n="panel_stregis"><span>Hoteles y resorts</span>The St. Regis Punta Mita Resort</div></div>
+          <div class="gallery-panel ph-wedding" data-dir="bottom"><div class="panel-caption" data-i18n="panel_wedding"><span>Bodas</span>Boda frente al mar</div></div>
+          <div class="gallery-panel ph-palapa" data-dir="right"><div class="panel-caption" data-i18n="panel_palapa"><span>Bodas</span>Boda bajo palapa</div></div>
+          <div class="gallery-panel ph-poolside" data-dir="left"><div class="panel-caption" data-i18n="panel_poolside"><span>Hoteles y resorts</span>Sesión en alberca de hotel</div></div>
+          <div class="gallery-panel ph-stage" data-dir="bottom"><div class="panel-caption" data-i18n="panel_stage"><span>Producción</span>Escenario en vivo a gran escala</div></div>
         </div>
       </div>
     </section>
 
     <section class="block" id="v3-contacto">
-      <span class="eyebrow">Contacto</span>
+      <span class="eyebrow" data-i18n="contact_eyebrow">Contacto</span>
       <div class="contact-row">
-        <p class="about-text">¿Buscas música en vivo para tu evento? Escríbenos o llama directamente para disponibilidad y cotización.</p>
+        <p class="about-text" data-i18n="contact_text">¿Buscas música en vivo para tu evento? Escríbenos o llama directamente para disponibilidad y cotización.</p>
         <address>
           Puerto Vallarta, Jalisco, México<br>
           <a href="tel:+523221591435">322 159 1435</a> · <a href="mailto:Staccato.Musicband@gmail.com">Staccato.Musicband@gmail.com</a><br>
@@ -886,7 +904,7 @@ a, button { touch-action: manipulation; }
 
     <footer class="site">
       <span>Staccato Live Music — Puerto Vallarta, Jalisco</span>
-      <span>Propuesta de sitio por Koreko</span>
+      <span data-i18n="footer_tagline">Propuesta de sitio por Koreko</span>
     </footer>
   </div>
 </main>
@@ -897,6 +915,153 @@ a, button { touch-action: manipulation; }
   var versions = document.querySelectorAll('.version');
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduceMotion) { document.documentElement.classList.add('reduced-motion'); }
+
+  /* ============ i18n: language detection + dictionary ============ */
+  var I18N = {
+    es: {
+      title: "Staccato Live Music — 3 conceptos de sitio (Koreko)",
+      metaDescription: "Staccato Live Music — banda de música en vivo en Puerto Vallarta y la Riviera Nayarit, con casi una década de trayectoria en bodas, resorts y eventos privados.",
+      htmlLang: "es",
+      toggleLabel: "EN",
+      t: {
+        switcher_label: "Koreko — propuesta de sitio para Staccato Live Music",
+        switcher_aria_label: "Elegir concepto de diseño",
+        switcher_v1_full: "① Escenario nocturno",
+        switcher_v1_short: "① Escenario",
+        switcher_v2_full: "② Atardecer en el Malecón",
+        switcher_v2_short: "② Malecón",
+        switcher_v3_full: "③ Cartel de tocada",
+        switcher_v3_short: "③ Cartel",
+        nav_sobre: "Sobre",
+        nav_servicios: "Servicios",
+        nav_contacto: "Contacto",
+        hero_h1: "Staccato Live Music toca en vivo en Puerto Vallarta y la Riviera Nayarit.",
+        hero_h1_v3: 'Staccato Live Music <mark>toca en vivo</mark> en Puerto Vallarta y la Riviera Nayarit.',
+        hero_sub: "Banda de música en vivo con cerca de una década de trayectoria en bodas, resorts y eventos privados en la bahía de Banderas.",
+        cta_primary: "Ver disponibilidad en Facebook",
+        cta_secondary: "Escríbenos",
+        about_eyebrow: "Sobre la banda",
+        about_text: "Desde 2017, Staccato Live Music ha llevado su repertorio en vivo a bodas, resorts y eventos privados en Puerto Vallarta y la Riviera Nayarit — de sets íntimos a producciones de escenario a gran escala, con formaciones que van de cuarteto a banda completa con sección de metales.",
+        services_eyebrow: "Servicios",
+        svc1_h3: "Bodas y eventos privados",
+        svc1_p: "Del cóctel a la pista de baile, un repertorio que se ajusta al momento de la noche.",
+        svc2_h3: "Hoteles y resorts",
+        svc2_p: "Sets en vivo junto a la alberca o en terraza — con paso ya confirmado por The St. Regis Punta Mita Resort.",
+        svc3_h3: "Producciones a gran escala",
+        svc3_p: "Escenario a medida, sección de metales y puesta en escena completa para el evento que lo requiera.",
+        gallery_eyebrow: "Momentos en vivo",
+        gallery_intro: "Un vistazo real a Staccato Live Music en escena — bodas, resorts y producciones a medida en Puerto Vallarta y la Riviera Nayarit.",
+        panel_stregis: '<span>Hoteles y resorts</span>The St. Regis Punta Mita Resort',
+        panel_wedding: '<span>Bodas</span>Boda frente al mar',
+        panel_palapa: '<span>Bodas</span>Boda bajo palapa',
+        panel_poolside: '<span>Hoteles y resorts</span>Sesión en alberca de hotel',
+        panel_stage: '<span>Producción</span>Escenario en vivo a gran escala',
+        contact_eyebrow: "Contacto",
+        contact_text: "¿Buscas música en vivo para tu evento? Escríbenos o llama directamente para disponibilidad y cotización.",
+        footer_tagline: "Propuesta de sitio por Koreko"
+      }
+    },
+    en: {
+      title: "Staccato Live Music — 3 Site Concepts (Koreko)",
+      metaDescription: "Staccato Live Music — a live-music band in Puerto Vallarta and the Riviera Nayarit, with nearly a decade of experience playing weddings, resorts, and private events.",
+      htmlLang: "en",
+      toggleLabel: "ES",
+      t: {
+        switcher_label: "Koreko — site proposal for Staccato Live Music",
+        switcher_aria_label: "Choose a design concept",
+        switcher_v1_full: "① Night stage",
+        switcher_v1_short: "① Stage",
+        switcher_v2_full: "② Sunset on the Malecón",
+        switcher_v2_short: "② Malecón",
+        switcher_v3_full: "③ Gig poster",
+        switcher_v3_short: "③ Poster",
+        nav_sobre: "About",
+        nav_servicios: "Services",
+        nav_contacto: "Contact",
+        hero_h1: "Staccato Live Music plays live in Puerto Vallarta and the Riviera Nayarit.",
+        hero_h1_v3: 'Staccato Live Music <mark>plays live</mark> in Puerto Vallarta and the Riviera Nayarit.',
+        hero_sub: "A live-music band with nearly a decade of experience playing weddings, resorts, and private events across the Bay of Banderas.",
+        cta_primary: "Check availability on Facebook",
+        cta_secondary: "Get in touch",
+        about_eyebrow: "About the band",
+        about_text: "Since 2017, Staccato Live Music has brought its live repertoire to weddings, resorts, and private events across Puerto Vallarta and the Riviera Nayarit — from intimate sets to large-scale stage productions, with lineups ranging from a quartet to a full band with horn section.",
+        services_eyebrow: "Services",
+        svc1_h3: "Weddings & private events",
+        svc1_p: "From cocktail hour to the dance floor, a repertoire that adapts to the moment.",
+        svc2_h3: "Hotels & resorts",
+        svc2_p: "Live sets poolside or on the terrace — with a confirmed booking at The St. Regis Punta Mita Resort.",
+        svc3_h3: "Large-scale productions",
+        svc3_p: "Custom staging, horn section, and full production for the event that calls for it.",
+        gallery_eyebrow: "Live moments",
+        gallery_intro: "A real look at Staccato Live Music on stage — weddings, resorts, and custom productions across Puerto Vallarta and the Riviera Nayarit.",
+        panel_stregis: '<span>Hotels &amp; resorts</span>The St. Regis Punta Mita Resort',
+        panel_wedding: '<span>Weddings</span>Beachfront wedding',
+        panel_palapa: '<span>Weddings</span>Wedding under a palapa',
+        panel_poolside: '<span>Hotels &amp; resorts</span>Poolside hotel session',
+        panel_stage: '<span>Production</span>Large-scale live stage',
+        contact_eyebrow: "Contact",
+        contact_text: "Looking for live music for your event? Message us or call directly for availability and a quote.",
+        footer_tagline: "Site proposal by Koreko"
+      }
+    }
+  };
+
+  function detectLang() {
+    var saved = localStorage.getItem('staccato-lang');
+    if (saved === 'es' || saved === 'en') { return saved; }
+    var nav = ((navigator.language || (navigator.languages && navigator.languages[0]) || 'es') + '').toLowerCase();
+    return nav.indexOf('en') === 0 ? 'en' : 'es';
+  }
+
+  var firstApply = true;
+
+  function applyLang(lang) {
+    var pack = I18N[lang];
+    document.documentElement.lang = pack.htmlLang;
+    document.title = pack.title;
+    var metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) { metaDesc.setAttribute('content', pack.metaDescription); }
+
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n');
+      if (pack.t[key] !== undefined) { el.innerHTML = pack.t[key]; }
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-aria');
+      if (pack.t[key] !== undefined) { el.setAttribute('aria-label', pack.t[key]); }
+    });
+
+    var toggleLabel = document.getElementById('lang-toggle-label');
+    if (toggleLabel) { toggleLabel.textContent = pack.toggleLabel; }
+
+    if (firstApply) {
+      firstApply = false;
+      /* FOUC guard held content hidden while the animation clock for .reveal
+         elements was already running (CSS animations aren't paused by
+         visibility:hidden) — restart them now, at the moment they actually
+         become visible, so the hero entrance still plays instead of
+         appearing statically settled. */
+      document.querySelectorAll('.version:not([hidden]) .reveal').forEach(function (el) {
+        el.classList.remove('reveal');
+        void el.offsetWidth;
+        el.classList.add('reveal');
+      });
+    }
+
+    document.body.classList.remove('i18n-loading');
+    requestAnimationFrame(requestStageUpdate);
+  }
+
+  applyLang(detectLang());
+
+  var langToggle = document.getElementById('lang-toggle');
+  if (langToggle) {
+    langToggle.addEventListener('click', function () {
+      var next = document.documentElement.lang === 'en' ? 'es' : 'en';
+      localStorage.setItem('staccato-lang', next);
+      applyLang(next);
+    });
+  }
 
   /* Shared timing helper: measures the sticky element's own rendered height
      and top offset (not the viewport) so "progress" lines up exactly with
