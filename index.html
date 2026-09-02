@@ -351,7 +351,7 @@ a, button { touch-action: manipulation; }
   font-family: 'Fraunces', Georgia, serif; font-weight: 900; font-style: italic;
   font-size: 1.4rem; letter-spacing: 0.01em;
 }
-#v1 nav.site ul { display: none; }
+#v1 nav.site ul { list-style: none; display: flex; gap: 0.9rem; margin: 0; padding: 0; flex-wrap: wrap; justify-content: flex-end; }
 #v1 nav.site a {
   text-decoration: none; color: #B8A98D; font-size: 0.85rem; letter-spacing: 0.03em;
   border-bottom: 1px solid transparent; padding-bottom: 2px; transition: color .15s, border-color .15s;
@@ -425,7 +425,7 @@ a, button { touch-action: manipulation; }
   display: flex; align-items: center; justify-content: space-between; padding: 1.3rem 0;
 }
 #v2 .wordmark { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 1.5rem; color: #C1401F; }
-#v2 nav.site ul { display: none; }
+#v2 nav.site ul { list-style: none; display: flex; gap: 0.9rem; margin: 0; padding: 0; flex-wrap: wrap; justify-content: flex-end; }
 #v2 nav.site a { text-decoration: none; color: #6B5642; font-size: 0.88rem; }
 #v2 nav.site a:hover { color: #1F6E6A; }
 #v2 .hero {
@@ -495,7 +495,7 @@ a, button { touch-action: manipulation; }
   font-family: 'Anton', Impact, sans-serif; font-size: 1.5rem; letter-spacing: 0.02em;
   color: #181818; transform: rotate(-1.5deg); display: inline-block;
 }
-#v3 nav.site ul { display: none; }
+#v3 nav.site ul { list-style: none; display: flex; gap: 0.9rem; margin: 0; padding: 0; flex-wrap: wrap; justify-content: flex-end; }
 #v3 nav.site a {
   text-decoration: none; color: #181818; font-weight: 700; font-size: 0.82rem;
   text-transform: uppercase; letter-spacing: 0.03em;
@@ -649,17 +649,18 @@ a, button { touch-action: manipulation; }
 <div class="switcher">
   <span class="switcher-label" data-i18n="switcher_label">Koreko — propuesta de sitio para Staccato Live Music</span>
   <div class="switcher-buttons" role="tablist" aria-label="Elegir concepto de diseño" data-i18n-aria="switcher_aria_label">
-    <button class="switcher-btn active" data-target="v1" role="tab" aria-selected="true"><span class="full" data-i18n="switcher_v1_full">① Escenario nocturno</span><span class="short" data-i18n="switcher_v1_short">① Escenario</span></button>
-    <button class="switcher-btn" data-target="v2" role="tab" aria-selected="false"><span class="full" data-i18n="switcher_v2_full">② Atardecer en el Malecón</span><span class="short" data-i18n="switcher_v2_short">② Malecón</span></button>
-    <button class="switcher-btn" data-target="v3" role="tab" aria-selected="false"><span class="full" data-i18n="switcher_v3_full">③ Cartel de tocada</span><span class="short" data-i18n="switcher_v3_short">③ Cartel</span></button>
+    <button id="tab-v1" class="switcher-btn active" data-target="v1" role="tab" aria-selected="true" aria-controls="v1"><span class="full" data-i18n="switcher_v1_full">① Escenario nocturno</span><span class="short" data-i18n="switcher_v1_short">① Escenario</span></button>
+    <button id="tab-v2" class="switcher-btn" data-target="v2" role="tab" aria-selected="false" aria-controls="v2" tabindex="-1"><span class="full" data-i18n="switcher_v2_full">② Atardecer en el Malecón</span><span class="short" data-i18n="switcher_v2_short">② Malecón</span></button>
+    <button id="tab-v3" class="switcher-btn" data-target="v3" role="tab" aria-selected="false" aria-controls="v3" tabindex="-1"><span class="full" data-i18n="switcher_v3_full">③ Cartel de tocada</span><span class="short" data-i18n="switcher_v3_short">③ Cartel</span></button>
   </div>
   <button id="lang-toggle" type="button" class="lang-toggle" aria-label="Switch language / Cambiar idioma">
     <span id="lang-toggle-label">EN</span>
   </button>
 </div>
 
+<main>
 <!-- ============================= V1 ============================= -->
-<main id="v1" class="version" data-version="1">
+<div id="v1" class="version" data-version="1" role="tabpanel" aria-labelledby="tab-v1" tabindex="0">
   <div class="wrap">
     <header class="site">
       <span class="wordmark">Staccato</span>
@@ -741,10 +742,10 @@ a, button { touch-action: manipulation; }
       <span data-i18n="footer_tagline">Propuesta de sitio por Koreko</span>
     </footer>
   </div>
-</main>
+</div>
 
 <!-- ============================= V2 ============================= -->
-<main id="v2" class="version" data-version="2" hidden>
+<div id="v2" class="version" data-version="2" role="tabpanel" aria-labelledby="tab-v2" tabindex="0" hidden>
   <div class="wrap">
     <header class="site">
       <span class="wordmark">Staccato</span>
@@ -827,10 +828,10 @@ a, button { touch-action: manipulation; }
       <span data-i18n="footer_tagline">Propuesta de sitio por Koreko</span>
     </footer>
   </div>
-</main>
+</div>
 
 <!-- ============================= V3 ============================= -->
-<main id="v3" class="version" data-version="3" hidden>
+<div id="v3" class="version" data-version="3" role="tabpanel" aria-labelledby="tab-v3" tabindex="0" hidden>
   <div class="wrap">
     <header class="site">
       <span class="wordmark">STACCATO</span>
@@ -912,6 +913,7 @@ a, button { touch-action: manipulation; }
       <span data-i18n="footer_tagline">Propuesta de sitio por Koreko</span>
     </footer>
   </div>
+</div>
 </main>
 
 <script>
@@ -1078,13 +1080,24 @@ a, button { touch-action: manipulation; }
   /* Shared timing helper: measures the sticky element's own rendered height
      and top offset (not the viewport) so "progress" lines up exactly with
      when the element actually unsticks — no dead scroll before whatever
-     comes next, regardless of screen size. */
+     comes next, regardless of screen size.
+     progress=0 must land at the moment the element visually engages
+     (rect.top === stickyTop), not at rect.top === 0 -- those aren't the
+     same point once stickyTop > 0, which was leaving a dead-scroll gap
+     at the start of every stage (measured: ~227px on this page). Using
+     "stickyTop - rect.top" as the scrolled distance instead of "-rect.top"
+     fixes the start gap and, since the total stuck-duration is genuinely
+     wrapHeight - stickyHeight (stickyTop only shifts *when* it engages,
+     not *how long* it stays engaged), progress=1 now lands exactly at
+     the real unstick point too -- verified against live scrollY/rect
+     measurements, not just the math. */
   function stageProgress(wrap, sticky) {
     var rect = wrap.getBoundingClientRect();
     var stickyTop = parseFloat(window.getComputedStyle(sticky).top) || 0;
     var stickyHeight = sticky.getBoundingClientRect().height;
-    var scrollable = rect.height - stickyHeight - stickyTop;
-    return scrollable > 0 ? Math.min(1, Math.max(0, -rect.top / scrollable)) : 0;
+    var scrollable = rect.height - stickyHeight;
+    var scrolled = stickyTop - rect.top;
+    return scrollable > 0 ? Math.min(1, Math.max(0, scrolled / scrollable)) : 0;
   }
 
   /* ---- Depth-swap panel stages: Servicios panels and Momentos en vivo
@@ -1141,15 +1154,35 @@ a, button { touch-action: manipulation; }
   }
 
   /* ---- version switcher ---- */
-  buttons.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      buttons.forEach(function (b) { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
-      btn.classList.add('active');
-      btn.setAttribute('aria-selected', 'true');
-      var target = btn.getAttribute('data-target');
-      versions.forEach(function (v) { v.hidden = v.id !== target; });
-      window.scrollTo(0, 0);
-      requestAnimationFrame(requestStageUpdate);
+  function activateTab(btn) {
+    buttons.forEach(function (b) {
+      var isActive = b === btn;
+      b.classList.toggle('active', isActive);
+      b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      b.setAttribute('tabindex', isActive ? '0' : '-1');
+    });
+    var target = btn.getAttribute('data-target');
+    versions.forEach(function (v) { v.hidden = v.id !== target; });
+    window.scrollTo(0, 0);
+    requestAnimationFrame(requestStageUpdate);
+  }
+
+  buttons.forEach(function (btn, i) {
+    btn.addEventListener('click', function () { activateTab(btn); });
+    /* Standard ARIA tabs keyboard contract: Left/Right/Home/End move focus
+       and activate the newly-focused tab (roving tabindex above keeps only
+       one tab in the Tab order at a time). */
+    btn.addEventListener('keydown', function (e) {
+      var nextIndex = null;
+      if (e.key === 'ArrowRight') { nextIndex = (i + 1) % buttons.length; }
+      else if (e.key === 'ArrowLeft') { nextIndex = (i - 1 + buttons.length) % buttons.length; }
+      else if (e.key === 'Home') { nextIndex = 0; }
+      else if (e.key === 'End') { nextIndex = buttons.length - 1; }
+      if (nextIndex === null) { return; }
+      e.preventDefault();
+      var nextBtn = buttons[nextIndex];
+      activateTab(nextBtn);
+      nextBtn.focus();
     });
   });
 })();
