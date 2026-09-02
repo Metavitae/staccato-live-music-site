@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -559,8 +559,7 @@ a, button { touch-action: manipulation; }
 @media (min-width: 641px) {
   .wrap { padding: 0 clamp(1.5rem, 4vw, 3rem); }
 
-  .switcher { padding: 0.7rem clamp(1rem, 3vw, 2rem); gap: 0.75rem 1.5rem; flex-wrap: nowrap; }
-  .switcher-label { display: inline; }
+  .switcher { padding: 0.7rem clamp(1rem, 3vw, 2rem); gap: 0.75rem 1.5rem; flex-wrap: wrap; }
   .switcher-buttons { width: auto; margin-left: auto; flex-wrap: nowrap; }
   .switcher-btn { flex: 0 0 auto; padding: 0.6rem 0.85rem; font-size: 0.76rem; text-align: left; }
   .switcher-btn .full { display: inline; }
@@ -635,6 +634,10 @@ a, button { touch-action: manipulation; }
   #v3 .panel-caption { font-size: 1.4rem; }
   #v3 address { font-size: 0.95rem; }
   #v3 footer.site { flex-direction: row; justify-content: space-between; gap: 0.75rem; font-size: 0.8rem; padding: 1.6rem 0 2.5rem; }
+}
+
+@media (min-width: 900px) {
+  .switcher-label { display: inline; }
 }
 </style>
 </head>
@@ -911,6 +914,7 @@ a, button { touch-action: manipulation; }
 
 <script>
 (function () {
+  document.documentElement.classList.remove('no-js');
   var buttons = document.querySelectorAll('.switcher-btn');
   var versions = document.querySelectorAll('.version');
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1052,6 +1056,7 @@ a, button { touch-action: manipulation; }
     requestAnimationFrame(requestStageUpdate);
   }
 
+  setTimeout(function () { document.body.classList.remove('i18n-loading'); }, 500);
   applyLang(detectLang());
 
   var langToggle = document.getElementById('lang-toggle');
