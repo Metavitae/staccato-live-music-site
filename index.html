@@ -203,7 +203,6 @@ a, button { touch-action: manipulation; }
   position: absolute; inset: 0;
   display: flex; flex-direction: column; justify-content: center;
   padding: 1.5rem 1.4rem;
-  will-change: transform, opacity;
   backface-visibility: hidden; transform-style: preserve-3d;
 }
 .no-js .svcstage-wrap, .reduced-motion .svcstage-wrap { height: auto; }
@@ -227,7 +226,6 @@ a, button { touch-action: manipulation; }
 .gallery-panel {
   position: absolute; inset: 0;
   background-size: cover; background-position: center;
-  will-change: transform, opacity;
   backface-visibility: hidden; transform-style: preserve-3d;
 }
 .gallery-panel::before {
@@ -1028,6 +1026,22 @@ a, button { touch-action: manipulation; }
      from its own data-dir, driven off the sticky element's own measured
      height (not the viewport) via stageProgress above. ---- */
   var depthStages = Array.prototype.slice.call(document.querySelectorAll('.svcstage-wrap, .gallerystage-wrap'));
+
+  /* will-change was previously permanent on every panel (24 total, 5 of
+     them full-bleed photo layers), holding those compositor layers for
+     the page's entire life even when scrolled far away. Toggle it on
+     only while a stage is actually near the viewport. */
+  if ('IntersectionObserver' in window) {
+    var wcObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var panels = entry.target.querySelectorAll('.svc-panel, .gallery-panel');
+        panels.forEach(function (panel) {
+          panel.style.willChange = entry.isIntersecting ? 'transform, opacity' : 'auto';
+        });
+      });
+    }, { rootMargin: '200px 0px' });
+    depthStages.forEach(function (wrap) { wcObserver.observe(wrap); });
+  }
 
   function updateDepthStage(wrap) {
     var stage = wrap.querySelector('.svcstage, .gallerystage');
